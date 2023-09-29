@@ -1,11 +1,11 @@
 interface returnValues { periodLength: number, trainingDays: number, success: boolean, rating: number, ratingDescription: string, target: number, average: number }
 
 interface commandLineArgs {
-    hours: number, target: number[]
+    hours: number[], target: number
 
 }
 
-const parseArguments = (args: string[]) => {
+const parseArguments = (args: string[]): commandLineArgs => {
     if (args.length < 4) throw new Error('Not enough arguments');
 
     const argsAsNumbers = args.slice(2).map(a => {
