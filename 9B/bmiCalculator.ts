@@ -1,6 +1,6 @@
 interface BmiValues {
     weight: number,
-    height: number
+    height: number;
 }
 
 const parseProcessArguments = (args: string[]): BmiValues => {
@@ -11,44 +11,44 @@ const parseProcessArguments = (args: string[]): BmiValues => {
         return {
             weight: Number(args[2]),
             height: Number(args[3])
-        }
+        };
     } else {
         throw new Error('Provided values were not numbers!');
     }
-}
+};
 
-export const parseQueryArguments = (weight: String, height: String): BmiValues => {
+export const parseQueryArguments = (weight: string, height: string): BmiValues => {
 
     if (!isNaN(Number(weight)) && !isNaN(Number(height))) {
         return {
             weight: Number(weight),
             height: Number(height)
-        }
+        };
     } else {
         throw new Error('Provided values were not numbers!');
     }
-}
+};
 
 export const calculateBMI = (weight: number, height: number): string => {
-    const bmi = weight / (height/100 * height/100)
+    const bmi = weight / (height / 100 * height / 100);
 
     console.log({ bmi });
 
     if (bmi > 30) {
-        return 'Obese (Significant overweight, higher risk of various health conditions)'
+        return 'Obese (Significant overweight, higher risk of various health conditions)';
     }
 
     if (bmi > 25) {
-        return 'Overweight (Slightly overweight, might be unhealthy)'
+        return 'Overweight (Slightly overweight, might be unhealthy)';
     }
 
     if (bmi > 18.5)
-        return 'Normal (Healthy weight)'
+        return 'Normal (Healthy weight)';
 
     else {
-        return 'Underweight (Might cause health implications)'
+        return 'Underweight (Might cause health implications)';
     }
-}
+};
 
 if (require.main === module) {
 
@@ -56,7 +56,7 @@ if (require.main === module) {
         const { weight, height } = parseProcessArguments(process.argv);
         console.log(calculateBMI(weight, height));
     } catch (error: unknown) {
-        let errorMessage = 'An error occured.\n'
+        let errorMessage = 'An error occured.\n';
         if (error instanceof Error) {
             errorMessage += 'Error: ' + error.message;
         }
